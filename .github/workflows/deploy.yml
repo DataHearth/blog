@@ -1,0 +1,72 @@
+name: Build and Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  ARTIFACTS_HUGO_BUILD_PATH: public
+  ARTIFACTS_HUGO_BUILD_NAME: hugo-build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build with Hugo
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: hugo --minify
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARTIFACTS_HUGO_BUILD_NAME }}
+          path: ${{ env.ARTIFACTS_HUGO_BUILD_PATH }}
+          retention-days: 7
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Pages
+    needs: build
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACTS_HUGO_BUILD_NAME }}
+          path: ${{ env.ARTIFACTS_HUGO_BUILD_PATH }}
+
+      - name: Publish
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: blog
+          directory: public
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

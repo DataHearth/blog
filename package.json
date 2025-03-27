@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "scripts": {
+    "lighthouse": "lighthouse http://localhost:1313 --view"
+  },
+  "packageManager": "pnpm@10.6.5",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.17",
+    "lighthouse": "^12.5.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-go-template": "^0.0.15",
+    "tailwindcss": "^4.0.17"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher"
+    ]
+  }
+}

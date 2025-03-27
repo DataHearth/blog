@@ -1,0 +1,18 @@
+{{ define "main" }}
+  {{ range (where .Site.RegularPages "Section" "articles") }}
+    <li class="w-3xl truncate flex flex-row">
+      <i data-lucide="dot"></i>
+      <span class="w-32 inline-block">
+        {{ .Date | time.Format ":date_medium" }}
+      </span>
+      <div class="flex flex-col">
+        <a href="{{ .RelPermalink }}">
+          {{ .LinkTitle }}
+        </a>
+        {{ if .Summary }}
+          <p>{{ .Summary }}</p>
+        {{ end }}
+      </div>
+    </li>
+  {{ end }}
+{{ end }}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html
+  lang="{{ or site.Language.LanguageCode `en` }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+  class="h-full bg-[#1B1B1B] text-[#D8D8D8]"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="{{ or .Summary `IoRw.dev - Discover unexpected resources !` }}"
+    />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    {{ with .OutputFormats.Get "rss" }}
+      {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+    {{ end }}
+
+
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+    {{ with slice
+      (resources.Get "js/shortcuts.js" | minify)
+      | resources.Concat "scripts.js" | fingerprint
+    }}
+      <script
+        src="{{ .RelPermalink }}"
+        integrity="{{ .Data.Integrity }}"
+        defer
+      ></script>
+    {{ end }}
+
+    {{ partialCached "css.html" . }}
+    {{ block "head" . }}{{ end }}
+  </head>
+  <body class="h-full flex flex-col mx-72 p-5">
+    <header class="mb-10">{{ partial "header.html" }}</header>
+    <main class="flex-grow">
+      {{ block "main" . }}
+      {{ end }}
+    </main>
+    <footer class="my-3">{{ partial "footer.html" }}</footer>
+    {{ with slice
+      (resources.GetRemote "https://unpkg.com/lucide@latest")
+      (resources.Get "js/lucide.js" | minify)
+      | resources.Concat "lucide.js" | fingerprint
+    }}
+      <script
+        src="{{ .RelPermalink }}"
+        integrity="{{ .Data.Integrity }}"
+      ></script>
+    {{ end }}
+  </body>
+</html>

@@ -1,0 +1,59 @@
+{{ $type := .Get "type" | default "note" }}
+{{ if eq $type "note" }}
+  <div
+    class="my-4 px-4 py-2 border-l-4 border-[#1F6FEB]  flex flex-col space-y-4"
+  >
+    <div class="flex flex-row items-center space-x-2 text-[#4493F8]">
+      <i data-lucide="info"></i>
+      <p class="font-bold my-0">{{ $type }}</p>
+    </div>
+
+    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+  </div>
+{{ else if eq $type "tip" }}
+  <div
+    class="my-4 px-4 py-2 border-l-4 border-[#238636]  flex flex-col space-y-4"
+  >
+    <div class="flex flex-row items-center space-x-2 text-[#39A749]">
+      <i data-lucide="lightbulb"></i>
+      <p class="font-bold my-0">{{ $type }}</p>
+    </div>
+
+    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+  </div>
+{{ else if eq $type "important" }}
+  <div
+    class="my-4 px-4 py-2 border-l-4 border-[#8957E5]  flex flex-col space-y-4"
+  >
+    <div class="flex flex-row items-center space-x-2 text-[#AB7DF8]">
+      <i data-lucide="message-square-warning"></i>
+      <p class="font-bold my-0">{{ $type }}</p>
+    </div>
+
+    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+  </div>
+{{ else if eq $type "warning" }}
+  <div
+    class="my-4 px-4 py-2 border-l-4 border-[#9E6A03]  flex flex-col space-y-4"
+  >
+    <div class="flex flex-row items-center space-x-2 text-[#96701D]">
+      <i data-lucide="triangle-alert"></i>
+      <p class="font-bold my-0">{{ $type }}</p>
+    </div>
+
+    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+  </div>
+{{ else if eq $type "caution" }}
+  <div
+    class="my-4 px-4 py-2 border-l-4 border-[#DA3633]  flex flex-col space-y-4"
+  >
+    <div class="flex flex-row items-center space-x-2 text-[#CD453F]">
+      <i data-lucide="triangle-alert"></i>
+      <p class="font-bold my-0">{{ $type }}</p>
+    </div>
+
+    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+  </div>
+{{ else }}
+  Invalid box
+{{ end }}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+  {{ $tags := slice }}
+  {{ range .Site.Pages }}
+    {{ if eq .Language.Lang $.Language.Lang }}
+      {{ if .Params.tags }}
+        {{ $tags = append $tags .Params.tags }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ .Content }}
+
+
+  <h1>Tags</h1>
+  {{ if not (gt (len $tags) 0) }}
+    No tags found.
+  {{ end }}
+
+
+  <ul>
+    {{ range $tags }}
+      {{ $tag := . | urlize }}
+      <li>
+        <a href="{{ $.Site.BaseURL }}tags/{{ $tag }}">{{ . }}</a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

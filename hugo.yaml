@@ -1,0 +1,68 @@
+baseURL: https://iorw.dev
+languageCode: en-us
+title: DataHearth's blog
+copyright: © 2025 IoRw.dev
+enableEmoji: true
+enableRobotsTXT: true
+
+params:
+  author:
+    email: dev@antoine-langlois.net
+    name: Antoine Langlois <DataHearth>
+  pinned_articles:
+    - /demo
+
+outputs:
+  home:
+    - html
+  section:
+    - html
+  taxonomy:
+    - html
+  term:
+    - html
+
+menus:
+  main:
+    - name: Home
+      pageRef: /
+      weight: 1
+    - name: Articles
+      pageRef: /articles
+      weight: 2
+    - name: Tags
+      pageRef: /tags
+      weight: 3
+
+markup:
+  goldmark:
+    extensions:
+      strikethrough: false
+      extras:
+        delete:
+          enable: true
+        insert:
+          enable: true
+        mark:
+          enable: true
+        subscript:
+          enable: true
+        superscript:
+          enable: true
+
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+    - source: assets/notwatching/hugo_stats\.json
+      target: css
+    - source: (postcss|tailwind)\.config\.js
+      target: css
+
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - disableWatch: true
+      source: hugo_stats.json
+      target: assets/notwatching/hugo_stats.json

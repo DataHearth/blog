@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+
+@layer base {
+  a {
+    color: #88a9e9;
+  }
+  h1 {
+    @apply text-4xl font-bold my-4;
+  }
+  h2 {
+    @apply text-3xl font-semibold my-3;
+  }
+  h3 {
+    @apply text-2xl font-medium my-2;
+  }
+  h4 {
+    @apply text-xl font-medium my-2;
+  }
+  h5 {
+    @apply text-lg font-medium my-2;
+  }
+  h6 {
+    @apply text-base font-medium my-2;
+  }
+
+  /* Paragraphs and text elements */
+  p {
+    @apply my-4 leading-relaxed;
+  }
+  strong {
+    @apply font-bold;
+  }
+  em {
+    @apply italic;
+  }
+  del {
+    @apply line-through;
+  }
+
+  /* Lists */
+  ul {
+    @apply list-disc pl-5 my-4;
+  }
+  ol {
+    @apply list-decimal pl-5 my-4;
+  }
+  li {
+    @apply my-1;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply border-l-4 border-gray-300 italic pl-4 my-4 text-gray-600;
+  }
+
+  /* Code Blocks */
+  pre {
+    @apply bg-[#272727] text-white px-4 rounded-lg overflow-x-auto my-4;
+  }
+  code {
+    @apply text-neutral-200 px-1 rounded bg-[#272727];
+  }
+
+  /* Tables */
+  table {
+    @apply table-auto border-collapse border bg-[#343434] border-gray-300 w-full my-4;
+  }
+  th,
+  td {
+    @apply border border-gray-300 px-4 py-2;
+  }
+  th {
+    @apply bg-[#414141] font-bold;
+  }
+
+  /* Horizontal Rule */
+  hr {
+    @apply border-t border-4 rounded-md border-gray-300 my-6;
+  }
+
+  /* Footnotes */
+  .footnotes {
+    @apply text-sm text-gray-500;
+  }
+
+  /* Task Lists */
+  input[type="checkbox"] {
+    @apply mr-2;
+  }
+
+  /* Images */
+  img {
+    @apply max-w-full rounded-lg shadow-md my-4;
+  }
+
+  /* Custom Elements for Hugo-specific features */
+  #tags a {
+    @apply text-purple-500 hover:text-purple-700;
+  }
+
+  /* Special handling for comments */
+  .comment {
+    @apply text-gray-400 italic;
+  }
+}

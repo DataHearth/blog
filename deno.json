@@ -1,0 +1,13 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "lighthouse": "lighthouse http://localhost:1313 --view"
+  },
+  "imports": {
+    "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.0.17",
+    "lighthouse": "npm:lighthouse@^12.5.1",
+    "prettier": "npm:prettier@^3.5.3",
+    "prettier-plugin-go-template": "npm:prettier-plugin-go-template@^0.0.15",
+    "tailwindcss": "npm:tailwindcss@^4.0.17"
+  }
+}
