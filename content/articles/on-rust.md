@@ -1,7 +1,7 @@
 ---
-title: "On Rust"
-date: "2024-01-03"
-summary: A humorous take on Rust's complexities and its place in web development.
+title: On Rust
+date: 2024-01-10
+summary: A humorous take on Rust's complexities and its place in web development. humorous take on Rust's complexities and its place in web development.
 tags:
   - rust
 ---

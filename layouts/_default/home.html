@@ -1,43 +1,16 @@
 {{ define "main" }}
   <h1>Pinned articles</h1>
-  <ul class="pl-0">
-    {{ range .Site.Params.pinned_articles }}
-      {{ with $.Site.GetPage (print "/articles" .) }}
-        <li class="w-3xl truncate flex flex-row">
-          <i data-lucide="dot"></i>
-          <span class="w-32 inline-block">
-            {{ .Date | time.Format ":date_medium" }}
-          </span>
-          <div class="flex flex-col">
-            <a href="{{ .RelPermalink }}">
-              {{ .LinkTitle }}
-            </a>
-            {{ if .Summary }}
-              <p>{{ .Summary }}</p>
-            {{ end }}
-          </div>
-        </li>
-      {{ end }}
+  {{ $pinned_articles := slice }}
+
+  {{ range .Site.Params.pinned_articles }}
+    {{ with $.Site.GetPage (print "/articles" .) }}
+      {{ $pinned_articles = $pinned_articles | append . }}
     {{ end }}
+  {{ end }}
+
+  {{ partial "articles_list.html" $pinned_articles }}
   </ul>
 
   <h1>Recent articles</h1>
-  <ul class="pl-0">
-    {{ range first 10 (where .Site.RegularPages "Section" "articles") }}
-      <li class="w-3xl truncate flex flex-row">
-        <i data-lucide="dot"></i>
-        <span class="w-32 inline-block">
-          {{ .Date | time.Format ":date_medium" }}
-        </span>
-        <div class="flex flex-col">
-          <a href="{{ .RelPermalink }}">
-            {{ .LinkTitle }}
-          </a>
-          {{ if .Summary }}
-            <p>{{ .Summary }}</p>
-          {{ end }}
-        </div>
-      </li>
-    {{ end }}
-  </ul>
+  {{ partial "articles_list.html" (first 10 (where .Site.RegularPages "Section" "articles")) }}
 {{ end }}

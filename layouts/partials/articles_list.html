@@ -1,0 +1,20 @@
+<ul class="w-full pl-0">
+  {{ range . }}
+    <li class="flex flex-row text-pretty">
+      <div class="flex min-w-fit basis-1/4 flex-row">
+        <i data-lucide="dot" class="text-nowrap"></i>
+        <span class="inline-block w-40 text-nowrap">
+          {{ .Date | time.Format ":date_medium" }}
+        </span>
+      </div>
+      <div class="flex basis-3/4 flex-col">
+        <a href="{{ .RelPermalink }}">
+          {{ .LinkTitle }}
+        </a>
+        {{ if .Summary }}
+          <p>{{ .Summary }}</p>
+        {{ end }}
+      </div>
+    </li>
+  {{ end }}
+</ul>

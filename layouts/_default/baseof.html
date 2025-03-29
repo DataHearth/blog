@@ -35,7 +35,7 @@
     {{ partialCached "css.html" . }}
     {{ block "head" . }}{{ end }}
   </head>
-  <body class="h-full flex flex-col mx-72 p-5">
+  <body class="flex h-full flex-col p-5 lg:mx-72">
     <header class="mb-10">{{ partial "header.html" }}</header>
     <main class="flex-grow">
       {{ block "main" . }}
