@@ -12,10 +12,20 @@ const searchList = document.getElementById("search-list");
 if (!searchList) throw new Error("Search list not found");
 
 searchInput.addEventListener("focusin", () => {
+  // * Fixes the children length being 0 when the search input is focused
+  // * due to initial value (DOM loading) being empty
+  const searchList = document.getElementById("search-list");
+
   if (searchList.children.length === 0) return;
   searchList.classList.remove("hidden");
 });
-searchInput.addEventListener("focusout", () => {
+searchInput.addEventListener("focusout", (ev) => {
+  /**
+   * @type {HTMLElement | null}
+   */
+  const target = ev.relatedTarget;
+  if (target && target.closest(`#${searchList.id}`) === searchList) return;
+
   searchList.classList.add("hidden");
 });
 
