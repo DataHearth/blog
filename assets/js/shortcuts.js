@@ -8,7 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const shortcut = item.textContent.trim().charAt(0).toLowerCase();
-    document.addEventListener("keypress", (e) => {
+    document.addEventListener("keyup", (e) => {
+      if (
+        e.target.tagName === "INPUT" ||
+        e.target.tagName === "TEXTAREA" ||
+        e.target.isContentEditable
+      ) {
+        return;
+      }
+
       if (e.key === shortcut) {
         window.location.href = url;
       } else if (e.key === "i") {

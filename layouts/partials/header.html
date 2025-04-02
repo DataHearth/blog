@@ -1,5 +1,7 @@
 {{ with site.Menus.main }}
-  <nav class="flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+  <nav
+    class="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4"
+  >
     {{ range . }}
       <a
         class="shortcut-item first-letter:underline first-letter:decoration-1 first-letter:underline-offset-2"
@@ -15,7 +17,7 @@
     {{ end }}
 
 
-    <form>
+    <div class="relative inline-block text-left">
       <input
         type="text"
         name="search"
@@ -23,6 +25,26 @@
         placeholder="[i] search..."
         class="block min-w-0 grow rounded-md px-3 py-1.5 text-base outline -outline-offset-1 outline-neutral-500 placeholder:text-gray-400 focus-within:outline focus-within:-outline-offset-2 focus-within:outline-neutral-400 sm:text-sm/6"
       />
-    </form>
+
+      <!--
+        Dropdown menu, show/hide based on menu state.
+    
+        Entering: "transition ease-out duration-100"
+          From: "transform opacity-0 scale-95"
+          To: "transform opacity-100 scale-100"
+        Leaving: "transition ease-in duration-75"
+          From: "transform opacity-100 scale-100"
+          To: "transform opacity-0 scale-95"
+      -->
+      <div
+        class="absolute left-0 z-10 mt-2 w-md origin-top-right rounded-md bg-[#272727] shadow-lg ring-1 ring-black/5 focus:outline-none"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        tabindex="-1"
+      >
+        <div id="search-list" class="hidden py-1" role="none"></div>
+      </div>
+    </div>
   </nav>
 {{ end }}

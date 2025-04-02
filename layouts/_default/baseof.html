@@ -23,12 +23,13 @@
 
     {{ with slice
       (resources.Get "js/shortcuts.js" | minify)
+      (resources.Get "js/search.js" | minify)
       | resources.Concat "scripts.js" | fingerprint
     }}
       <script
+        defer
         src="{{ .RelPermalink }}"
         integrity="{{ .Data.Integrity }}"
-        defer
       ></script>
     {{ end }}
 

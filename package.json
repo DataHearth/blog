@@ -1,12 +1,14 @@
 {
   "version": "1.0.0",
   "scripts": {
-    "lighthouse": "lighthouse http://localhost:1313 --view"
+    "lighthouse": "lighthouse http://localhost:1313 --view",
+    "gen:search-index": "pagefind --site public"
   },
   "packageManager": "pnpm@10.6.5",
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.17",
     "lighthouse": "^12.5.1",
+    "pagefind": "^1.3.0",
     "prettier": "^3.5.3",
     "prettier-plugin-go-template": "^0.0.15",
     "prettier-plugin-tailwindcss": "^0.6.11",
