@@ -1,0 +1,32 @@
+{
+	"Hugo Box Shortcode - Note": {
+		"prefix": "box-note",
+		"body": ["{{< box type=\"note\" >}}\n$1\n{{< /box >}}"],
+		"description": "Hugo shortcode for a styled note box",
+		"scope": "markdown"
+	},
+	"Hugo Box Shortcode - Tip": {
+		"prefix": "box-tip",
+		"body": ["{{< box type=\"tip\" >}}\n$1\n{{< /box >}}"],
+		"description": "Hugo shortcode for a styled tip box",
+		"scope": "markdown"
+	},
+	"Hugo Box Shortcode - Important": {
+		"prefix": "box-important",
+		"body": ["{{< box type=\"important\" >}}\n$1\n{{< /box >}}"],
+		"description": "Hugo shortcode for a styled important box",
+		"scope": "markdown"
+	},
+	"Hugo Box Shortcode - Warning": {
+		"prefix": "box-warning",
+		"body": ["{{< box type=\"warning\" >}}\n$1\n{{< /box >}}"],
+		"description": "Hugo shortcode for a styled warning box",
+		"scope": "markdown"
+	},
+	"Hugo Box Shortcode - Caution": {
+		"prefix": "box-caution",
+		"body": ["{{< box type=\"caution\" >}}\n$1\n{{< /box >}}"],
+		"description": "Hugo shortcode for a styled caution box",
+		"scope": "markdown"
+	},
+}
