@@ -58,16 +58,28 @@ jobs:
       deployments: write
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - uses: actions/download-artifact@v4
         with:
           name: ${{ env.ARTIFACTS_HUGO_BUILD_NAME }}
           path: ${{ env.ARTIFACTS_HUGO_BUILD_PATH }}
 
-      - name: Publish
-        uses: cloudflare/pages-action@v1
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: blog
-          directory: public
+          command: pages deploy public --project-name=blog
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
