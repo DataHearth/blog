@@ -21,7 +21,7 @@
     {{ range $tags }}
       {{ $tag := . | urlize }}
       <li>
-        <a href="{{ $.Site.BaseURL }}tags/{{ $tag }}">{{ . }}</a>
+        <a href="/tags/{{ $tag }}">{{ . }}</a>
       </li>
     {{ end }}
   </ul>

@@ -42,8 +42,7 @@
   <body class="flex h-full flex-col p-5 lg:mx-72">
     <header class="mb-10">{{ partial "header.html" }}</header>
     <main class="flex-grow">
-      {{ block "main" . }}
-      {{ end }}
+      {{ block "main" . }}{{ end }}
     </main>
     <footer class="my-3">{{ partial "footer.html" }}</footer>
   </body>

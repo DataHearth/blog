@@ -1,0 +1,2 @@
+site: public
+glob: "{tags.html,articles/**/*.html}"

@@ -1,11 +1,6 @@
 {{ define "main" }}
-  <h1>Pages tagged with "{{ .Title }}"</h1>
+  <h1>Pages tagged with "{{ lower .Title }}"</h1>
 
-  <ul>
-    {{ range .Pages }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </li>
-    {{ end }}
-  </ul>
+  {{ partial "articles_list.html" .Pages }}
+
 {{ end }}
