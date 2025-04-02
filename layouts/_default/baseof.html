@@ -46,15 +46,5 @@
       {{ end }}
     </main>
     <footer class="my-3">{{ partial "footer.html" }}</footer>
-    {{ with slice
-      (resources.GetRemote "https://unpkg.com/lucide@latest")
-      (resources.Get "js/lucide.js" | minify)
-      | resources.Concat "lucide.js" | fingerprint
-    }}
-      <script
-        src="{{ .RelPermalink }}"
-        integrity="{{ .Data.Integrity }}"
-      ></script>
-    {{ end }}
   </body>
 </html>
