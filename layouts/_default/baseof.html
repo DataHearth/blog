@@ -24,12 +24,15 @@
     {{ with slice
       (resources.Get "js/shortcuts.js" | minify)
       (resources.Get "js/search.js" | minify)
+      (resources.GetRemote "https://static.cloudflareinsights.com/beacon.min.js")
       | resources.Concat "scripts.js" | fingerprint
     }}
       <script
         defer
+        type="module"
         src="{{ .RelPermalink }}"
         integrity="{{ .Data.Integrity }}"
+        data-cf-beacon='{"token": "36780d556d4c41f29d656f2dc5ae0229"}'
       ></script>
     {{ end }}
 
