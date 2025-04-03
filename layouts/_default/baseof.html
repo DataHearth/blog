@@ -19,7 +19,9 @@
     {{ end }}
 
 
-    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <title>
+      {{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+    </title>
 
     {{ with slice
       (resources.Get "js/shortcuts.js" | minify)

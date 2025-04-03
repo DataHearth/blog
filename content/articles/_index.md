@@ -1,4 +1,4 @@
 ---
-title: Blog
+title: Articles
 outputs: [html, rss]
 ---
