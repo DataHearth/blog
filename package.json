@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
+  "version": "0.0.0",
   "scripts": {
     "lighthouse": "lighthouse http://localhost:1313 --view",
     "gen:search-index": "pagefind",
-    "dev": "hugo server --watch --gc --cleanDestinationDir --noHTTPCache"
+    "dev": "hugo server --watch --gc --noHTTPCache"
   },
   "packageManager": "pnpm@10.6.5",
   "devDependencies": {
