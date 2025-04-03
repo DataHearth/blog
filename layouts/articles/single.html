@@ -1,11 +1,19 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ with .Date }}
-    {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateHuman := . | time.Format ":date_long" }}
-    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-  {{ end }}
-  <article>
-    {{ .Content }}
-  </article>
+  <div class="relative">
+    <aside class="fixed left-10 hidden w-64 text-pretty lg:block">
+      <nav class="max-h-[80vh] space-y-2 overflow-y-auto text-sm">
+        {{ .TableOfContents }}
+      </nav>
+    </aside>
+    <article>
+      <h1>{{ .Title }}</h1>
+      {{ with .Date }}
+        {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+        {{ $dateHuman := . | time.Format ":date_long" }}
+        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+      {{ end }}
+
+      {{ .Content }}
+    </article>
+  </div>
 {{ end }}
