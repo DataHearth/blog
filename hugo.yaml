@@ -12,7 +12,7 @@ params:
     email: dev@antoine-langlois.net
     name: Antoine Langlois <DataHearth>
   pinned_articles:
-    - /welcome
+    - /hello-world
 
 outputs:
   home:
