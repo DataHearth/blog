@@ -1,16 +1,20 @@
 {{ define "title" }}{{ .Site.Title }}{{ end }}
 {{ define "main" }}
-  <h1>Pinned articles</h1>
-  {{ $pinned_articles := slice }}
+  {{ with .Site.Params.pinned_articles }}
+    {{ if gt (len .) 0 }}
+      <h1>Pinned articles</h1>
+      {{ $pinned_articles := slice }}
 
-  {{ range .Site.Params.pinned_articles }}
-    {{ with $.Site.GetPage (print "/articles" .) }}
-      {{ $pinned_articles = $pinned_articles | append . }}
+      {{ range . }}
+        {{ with $.Site.GetPage (print "/articles" .) }}
+          {{ $pinned_articles = $pinned_articles | append . }}
+        {{ end }}
+      {{ end }}
+
+      {{ partial "articles_list.html" $pinned_articles }}
     {{ end }}
   {{ end }}
 
-  {{ partial "articles_list.html" $pinned_articles }}
-  </ul>
 
   <h1>Recent articles</h1>
   {{ partial "articles_list.html" (first 10 (where .Site.RegularPages "Section" "articles")) }}
