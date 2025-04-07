@@ -1,8 +1,8 @@
 ---
-date: {{ .Date }}
+date: {{ time.Now | time.Format "02-01-2006" }}
 draft: true
 title: {{ replace .File.ContentBaseName "-" " " | title }}
-summary: REPLACE ME
+summary: {{time.Now}}
 params:
   tags: []
 ---

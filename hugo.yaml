@@ -5,13 +5,14 @@ copyright: © 2025 IoRw.dev
 enableEmoji: true
 enableRobotsTXT: true
 ignoreLogs: [warning-goldmark-raw-html]
+timeZone: Europe/Paris
 
 params:
   author:
     email: dev@antoine-langlois.net
     name: Antoine Langlois <DataHearth>
   pinned_articles:
-    - /demo
+    - /welcome
 
 outputs:
   home:
