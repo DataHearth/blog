@@ -1,7 +1,7 @@
 {{ $type := .Get "type" | default "note" }}
 {{ if eq $type "note" }}
   <div
-    class="my-4 flex flex-col space-y-4 border-l-4 border-[#1F6FEB] px-4 py-2"
+    class="my-4 flex flex-col space-y-4 border-l-4 border-[#1F6FEB] px-4 pt-2 pb-0"
   >
     <div class="flex flex-row items-center space-x-2 text-[#4493F8]">
       <svg
@@ -23,11 +23,13 @@
       <p class="my-0 font-bold">{{ $type }}</p>
     </div>
 
-    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+    <div class="my-0">
+      {{ .Inner | .Page.RenderString }}
+    </div>
   </div>
 {{ else if eq $type "tip" }}
   <div
-    class="my-4 flex flex-col space-y-4 border-l-4 border-[#238636] px-4 py-2"
+    class="my-4 flex flex-col space-y-4 border-l-4 border-[#238636] px-4 pt-2 pb-0"
   >
     <div class="flex flex-row items-center space-x-2 text-[#39A749]">
       <svg
@@ -51,11 +53,13 @@
       <p class="my-0 font-bold">{{ $type }}</p>
     </div>
 
-    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+    <div class="my-0">
+      {{ .Inner | .Page.RenderString }}
+    </div>
   </div>
 {{ else if eq $type "important" }}
   <div
-    class="my-4 flex flex-col space-y-4 border-l-4 border-[#8957E5] px-4 py-2"
+    class="my-4 flex flex-col space-y-4 border-l-4 border-[#8957E5] px-4 pt-2 pb-0"
   >
     <div class="flex flex-row items-center space-x-2 text-[#AB7DF8]">
       <svg
@@ -79,11 +83,13 @@
       <p class="my-0 font-bold">{{ $type }}</p>
     </div>
 
-    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+    <div class="my-0">
+      {{ .Inner | .Page.RenderString }}
+    </div>
   </div>
 {{ else if eq $type "warning" }}
   <div
-    class="my-4 flex flex-col space-y-4 border-l-4 border-[#9E6A03] px-4 py-2"
+    class="my-4 flex flex-col space-y-4 border-l-4 border-[#9E6A03] px-4 pt-2 pb-0"
   >
     <div class="flex flex-row items-center space-x-2 text-[#96701D]">
       <svg
@@ -107,11 +113,13 @@
       <p class="my-0 font-bold">{{ $type }}</p>
     </div>
 
-    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+    <div class="my-0">
+      {{ .Inner | .Page.RenderString }}
+    </div>
   </div>
 {{ else if eq $type "caution" }}
   <div
-    class="my-4 flex flex-col space-y-4 border-l-4 border-[#DA3633] px-4 py-2"
+    class="my-4 flex flex-col space-y-4 border-l-4 border-[#DA3633] px-4 pt-2 pb-0"
   >
     <div class="flex flex-row items-center space-x-2 text-[#CD453F]">
       <svg
@@ -133,7 +141,9 @@
       <p class="my-0 font-bold">{{ $type }}</p>
     </div>
 
-    <p class="my-0">{{ .Inner | .Page.RenderString }}</p>
+    <div class="my-0">
+      {{ .Inner | .Page.RenderString }}
+    </div>
   </div>
 {{ else }}
   Invalid box
