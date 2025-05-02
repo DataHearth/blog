@@ -23,22 +23,57 @@
       {{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}
     </title>
 
-    {{ with slice
-      (resources.Get "js/shortcuts.js" | minify)
-      (resources.Get "js/search.js" | minify)
-      (resources.GetRemote "https://static.cloudflareinsights.com/beacon.min.js")
-      | resources.Concat "scripts.js" | fingerprint
+    {{ $scripts := slice
+      (resources.Get "js/shortcuts.js")
+      (resources.Get "js/search.js")
     }}
+    {{ $css := resources.Get "css/syntax.css" }}
+    {{ if hugo.IsProduction }}
+      {{ $scripts = ($scripts | append (resources.GetRemote "https://static.cloudflareinsights.com/beacon.min.js")) }}
+      {{ $css = $css | minify | fingerprint }}
+    {{ end }}
+
+    {{ with $scripts | resources.Concat "js/scripts.js" | minify | fingerprint }}
       <script
         defer
         type="module"
         src="{{ .RelPermalink }}"
-        integrity="{{ .Data.Integrity }}"
+        integrity="{{ or .Data.Integrity "" }}"
         data-cf-beacon='{"token": "36780d556d4c41f29d656f2dc5ae0229"}'
       ></script>
     {{ end }}
 
-    {{ partialCached "css.html" . }}
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ $css.RelPermalink }}"
+      integrity="{{ or $css.Data.Integrity "" }}"
+    />
+    {{ with (templates.Defer (dict "key" "global")) }}
+      {{ with resources.Get "css/main.css" }}
+        {{ $opts := dict
+          "minify" hugo.IsProduction
+          "inlineImports" true
+        }}
+        {{ with . | css.TailwindCSS $opts }}
+          {{ if hugo.IsProduction }}
+            {{ with . | fingerprint }}
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="{{ .RelPermalink }}"
+                integrity="{{ .Data.Integrity }}"
+                crossorigin="anonymous"
+              />
+            {{ end }}
+          {{ else }}
+            <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" />
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
     {{ block "head" . }}{{ end }}
   </head>
   <body class="flex h-full flex-col p-5 lg:mx-72">

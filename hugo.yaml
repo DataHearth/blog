@@ -44,6 +44,9 @@ menus:
       weight: 4
 
 markup:
+  highlight:
+    style: github-dark
+    noClasses: false
   goldmark:
     extensions:
       strikethrough: false

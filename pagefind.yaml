@@ -1,2 +1,2 @@
 site: public
-glob: "{tags.html,articles/**/*.html}"
+glob: "{articles/**/*.html,tags/index.html,categories/index.html}"
