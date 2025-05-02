@@ -24,6 +24,10 @@ outputs:
   term:
     - html
 
+taxonomies:
+  tag: tags
+  category: categories
+
 menus:
   main:
     - name: Home
@@ -32,9 +36,12 @@ menus:
     - name: Articles
       pageRef: /articles
       weight: 2
+    - name: Categories
+      pageRef: /categories
+      weight: 3
     - name: Tags
       pageRef: /tags
-      weight: 3
+      weight: 4
 
 markup:
   goldmark:

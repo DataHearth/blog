@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <h1>Categories</h1>
+  {{ if not (gt (len .Pages) 0) }}
+    No tags found.
+  {{ end }}
+
+
+  <ul>
+    {{ range .Pages }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

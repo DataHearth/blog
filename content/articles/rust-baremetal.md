@@ -4,10 +4,9 @@ title: Rust Baremetal
 summary: Create a freestanding binary with Rust
 categories:
   - Programming
-params:
-  tags:
-    - Rust
-    - baremetal
+tags:
+- rust
+- baremetal
 ---
 
 Most Linux software and libraries rely on the [`GNU C Library`](https://en.wikipedia.org/wiki/GNU_C_Library) (glibc for short). It's a marvel of engineering created by Roland McGrath in 1987 and incorporated into the GNU Project. It's well known for its integration in the [GNU/Linux](https://en.wikipedia.org/wiki/Linux) operating system. As one of the most renowned C libraries (and software libraries), many projects rely on it: operating systems, languages, applications, libraries, etc.
