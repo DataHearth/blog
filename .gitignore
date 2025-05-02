@@ -1,7 +1,7 @@
-.direnv
-public
-hugo_stats.json
-node_modules
-public
-.secrets
-.vars
+/.direnv
+/public
+/hugo_stats.json
+/node_modules
+/.secrets
+/.vars
+/lighthouse-report.html
