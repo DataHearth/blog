@@ -1,2 +1,3 @@
 --var-file .vars
 --secret-file .secrets
+--platform catthehacker/ubuntu:act-latest
