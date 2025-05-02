@@ -1,0 +1,19 @@
+[package]
+name = "rust_baremetal"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[[bin]]
+name = "rust_baremetal"
+path = "src/main.rs"
+test = false
+doctest = false
+bench = false
